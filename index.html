@@ -3,18 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Do DALL-E and Flamingo Understand Each Other?">
-  <meta name="keywords" content="Multimodal Generative Models, Text-to-Image, Image Captioning">
+        content="InsideOut.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DALLE Flamingo</title>
+  <title>InsideOut</title>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV4ZJ9PVSV"></script>  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
-    gtag('config', 'G-FV4ZJ9PVSV');
+    gtag('config', 'G-PYVRSFMDRL');
   </script>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -27,6 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -34,44 +40,87 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
-<body onload="updateInteractive();">
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
 
 <section class="hero">
   <div class="hero-body">
-    <div class="container is-fullhd">
+    <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Do DALL-E and Flamingo Understand Each Other?</h1>
+          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a target="_blank" href="https://hangligit.github.io/">Hang Li*</a><sup>1, 2</sup>,
+              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a target="_blank" href="https://jindonggu.github.io/">Jindong Gu*</a><sup>3</sup>,
+              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a target="_blank" href="https://www.linkedin.com/in/rajat-koner/">Rajat Koner</a><sup>1</sup>,
+              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a target="_blank" href="https://www.linkedin.com/in/sahandsharifzadeh/?locale=de_DE">Sahand Sharifzadeh</a><sup>1</sup>,
+              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a target="_blank" href="https://www.dbs.ifi.lmu.de/~tresp/">Volker Tresp</a><sup>1, 2</sup>
+              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>LMU Munich,</span>
-            <span class="author-block"><sup>2</sup>Siemens AG,</span>
-            <span class="author-block"><sup>3</sup>University of Oxford</span>
+            <span class="author-block"><sup>1</sup>University of Washington,</span>
+            <span class="author-block"><sup>2</sup>Google Research</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              
               <!-- PDF Link. -->
               <span class="link-block">
-                <a target="_blank" href="https://openaccess.thecvf.com/content/ICCV2023/papers/Li_Do_DALL-E_and_Flamingo_Understand_Each_Other_ICCV_2023_paper.pdf"
+                <a href="https://arxiv.org/pdf/2011.12948"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -79,67 +128,127 @@
                   <span>Paper</span>
                 </a>
               </span>
-
-            <!-- Arxiv Link. -->
-            <span class="link-block">
-              <a target="_blank" href="https://arxiv.org/abs/2212.12249"
-                 class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                    <i class="fas fa-file"></i>
-                </span>
-                <span>ArXiv</span>
-              </a>
-            </span>
-
-            <!-- Video Link. -->
-            <span class="link-block">
-              <a target="_blank" href="https://dalleflamingo.github.io"
-                 class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                    <i class="fab fa-youtube"></i>
-                </span>
-                <span>Video</span>
-              </a>
-            </span>
-
-            <!-- Code Link. -->
-            <span class="link-block">
-              <a target="_blank" href="https://github.com/hangligit/DalleFlamingo"
-                 class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                    <i class="fab fa-github"></i>
-                </span>
-                <span>Code</span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
                 </a>
-            </span>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
             </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
 
 <section class="hero teaser">
-  <div class="container is-fullhd">
+  <div class="container is-max-desktop">
     <div class="hero-body">
-      <div class="container">
-        <div class="rows">
-          <div style="text-align: center;">
-            <img src="images/Page1.jpg" class="interpolation-image" style="width: 100%; height: auto;"/>
-          </div>
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
         </div>
-        <br>
-        <h2 class="subtitle has-text-centered">
-          <b>VL-Alignment: How can we be sure that a text-to-image model has the same understanding of what a bird is as an image-to-text model?</b>
-          <br>We explore two types of large-scale multimodal generative models, image-to-text and text-to-image. The image-to-text model generates abstract descriptions of an image, whereas the text-to-image model decodes the text into low-level visual pixel features. These two models are closely related but their relationship is little understood. In this work, we study if large multimodal generative models understand each other. Specifically, if Flamingo describes an image in text, can DALLE reconstruct an image similar to the input image from the text?
-        </h2>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -149,182 +258,233 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example. An interesting question worth exploring in this domain is whether Flamingo and DALL-E understand each other. To study this question, we propose a reconstruction task where Flamingo generates a description for a given image and DALL-E uses this description as input to synthesize a new image. We argue that these models understand each other if the generated image is similar to the given image. Specifically, we study the relationship between the quality of the image reconstruction and that of the text generation. We find that an optimal description of an image is one that gives rise to a generated image similar to the original one. The finding motivates us to propose a unified framework to finetune the text-to-image and image-to-text models. Concretely, the reconstruction part forms a regularization loss to guide the tuning of the models. Extensive experiments on multiple datasets with different image captioning and image generation models validate our findings and demonstrate the effectiveness of our proposed unified framework. As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work.
+            We present the first method capable of photorealistically reconstructing a non-rigidly
+            deforming scene using photos/videos captured casually from mobile phones.
+          </p>
+          <p>
+            Our approach augments neural radiance fields
+            (NeRF) by optimizing an
+            additional continuous volumetric deformation field that warps each observed point into a
+            canonical 5D NeRF.
+            We observe that these NeRF-like deformation fields are prone to local minima, and
+            propose a coarse-to-fine optimization method for coordinate-based models that allows for
+            more robust optimization.
+            By adapting principles from geometry processing and physical simulation to NeRF-like
+            models, we propose an elastic regularization of the deformation field that further
+            improves robustness.
+          </p>
+          <p>
+            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
+            photos/videos into deformable NeRF
+            models that allow for photorealistic renderings of the subject from arbitrary
+            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
+            using a
+            rig with two mobile phones that take time-synchronized photos, yielding train/validation
+            images of the same pose at different viewpoints. We show that our method faithfully
+            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
+            fidelity.
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
-  <!-- Paper video. -->
-  <!-- <br>
-  <br>
-
-  <div class="container is-max-widescreen">
-
-    <div class="rows">
-      <h2 class="title is-3">Video</h2>
-      <div class="publication-video">
-        <iframe src="https://www.youtube.com/embed/Yvn4eR05A3M"
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
-  </div> -->
-
+    <!--/ Paper video. -->
+  </div>
 </section>
 
+
 <section class="section">
-  <div class="container is-max-widescreen">
+  <div class="container is-max-desktop">
 
-    <div class="rows">
-      <h2 class="title is-3">Experiment</h2>
+    <div class="columns is-centered">
 
-      <h2 class="title is-5">Image-to-Text-to-Image</h2>
-      <p class="content has-text-justified">
-        The quality of a caption can be evaluated by assessing the image reconstruction produced by a text-to-image model. The best text for an image is one that leads to the most accurate reconstruction of the original image
-      </p>
-
-      <p class="content has-text-justified">
-      <b>Method</b>: The generated image is compared with the input image using a similarity function based on CLIP image embeddings.
-      Human-annotated captions serve as ground truth representations of the input image to evaluate the quality of the generated caption.      
-      </p>
-
-      <div style="text-align: center;">
-        <img src="images/Page4.png" class="interpolation-image" style="width: 60%; height: auto;"/>
-      </div>
-      <br>
-
-      <b>Evaluation</b>: The result with three similarity and four caption metrics on the NoCaps dataset suggests that regardless of the similarity or evaluation metric, better image reconstruction always leads to better captions.
-      </p>
-      <br>
-
-      <div style="text-align: center;">
-        <img src="images/Page5.png" class="interpolation-image" style="width: 60%; height: auto;"/>
-      </div>
-      <br>
-      
-      <p class="content has-text-justified">
-      <b>Qualitative examples</b> of reconstruction tasks. The figure shows image reconstruction for the given input image of a bird. Two samples are shown with their generated images, ranked by the image similarity.
-      </p>
-
-      <div style="text-align: center;">
-        <img src="images/Page3.png" class="interpolation-image" style="width: 50%; height: auto;"/>
-      </div>
-    </br>
-
-
-      <h2 class="title is-5">Text-to-Image-to-Text</h2>
-      <p class="content has-text-justified">
-        The quality of a generated image can be evaluated by assessing the text reconstruction produced by a caption model. The best image for an image is one that leads to the most accurate reconstruction of the original text.
-      </p>
-
-      <p class="content has-text-justified">
-        <b>Method</b>: The generated image is compared with the input image using a similarity function based on CLIP image embeddings.
-        Human-annotated captions serve as ground truth representations of the input image to evaluate the quality of the generated caption.      
-        </p>
-  
-        <div style="text-align: center;">
-          <img src="images/Page6.png" class="interpolation-image" style="width: 60%; height: auto;"/>
-        </div>
-        <br>
-  
-        <b>Evaluation</b>: The result with three similarity and four caption metrics on the NoCaps dataset suggests that regardless of the similarity or evaluation metric, better image reconstruction always leads to better captions.
-        </p>
-        <br>
-  
-        <div style="text-align: center;">
-          <img src="images/Page7.png" class="interpolation-image" style="width: 60%; height: auto;"/>
-        </div>
-        <br>
-        
-        <p class="content has-text-justified">
-        <b>Qualitative examples</b> of reconstruction tasks. The figure shows text reconstruction for the given input image of a text. Two samples are shown with their generated texts, ranked by the image similarity. 
-        </p>
-  
-        <div style="text-align: center;">
-          <img src="images/Page8.png" class="interpolation-image" style="width: 50%; height: auto;"/>
-        </div>
-  
-        <br>
-        <p class="content has-text-justified">
-          <b>More Visualizations:</b> 
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
           </p>
-        <div style="text-align: center;">
-          <img src="images/Page11.jpg" class="interpolation-image" style="width: 100%; height: auto;"/>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
         </div>
+      </div>
+      <!--/ Visual Effects. -->
 
-        <br>
-        <div style="text-align: center;">
-          <img src="images/Page12.jpg" class="interpolation-image" style="width: 100%; height: auto;"/>
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Matting</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              As a byproduct of our method, we can also solve the matting problem by ignoring
+              samples that fall outside of a bounding box during rendering.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/matting.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
         </div>
-
+      </div>
     </div>
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
   </div>
 </section>
-
-
-
-<section class="section">
-  <div class="container is-max-widescreen">
-
-    <div class="rows">
-      <h2 class="title is-3">Cycle Finetuning</h2>
-      <p class="content has-text-justified">
-      <b>A Finetuning Framework</b> We propose a unified framework to enhance both the image-to-text and text-to-image models: finetuning the image-to-text model using a reconstruction loss computed by a text-to-image model as regularization.
-      </p>
-      <div style="text-align: center;">
-        <img src="images/Page2.png" class="interpolation-image" style="width: 120%; height: auto;"/>
-      </div>
-
-      <br>
-      <p class="content has-text-justified">
-        <b>Improvement:</b> Image-to-Text Captioning task
-        </p>
-        <div style="text-align: center;">
-          <img src="images/Page9.png" class="interpolation-image" style="width: 120%; height: auto;"/>
-        </div>
-
-        <b>Improvement:</b> Text-to-Image Generation task
-      </p>
-      <br>
-      <div style="text-align: center;">
-        <img src="images/Page10.png" class="interpolation-image" style="width: 50%; height: auto;"/>
-      </div>
-    
-    </div>
-  </div>
-</section>
-
 
 
 <section class="section" id="BibTeX">
-  <div class="container is-max-widescreen content">
+  <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@InProceedings{li2023dall,
-        author    = {Li, Hang and Gu, Jindong and Koner, Rajat and Sharifzadeh, Sahand and Tresp, Volker},
-        title     = {Do DALL-E and Flamingo Understand Each Other?},
-        booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-        month     = {October},
-        year      = {2023},
-        pages     = {1999-2010}
-    }</code></pre>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
   </div>
 </section>
 
+
 <footer class="footer">
   <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
     <div class="columns is-centered">
-      <div class="column">
-        <div class="content has-text-centered">
+      <div class="column is-8">
+        <div class="content">
           <p>
-            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a href="https://voxposer.github.io/">VoxPoser</a>. 
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
           </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
-
 
 </body>
 </html>
