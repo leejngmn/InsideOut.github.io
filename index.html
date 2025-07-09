@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Do DALL-E and Flamingo Understand Each Other?">
+  <meta name="keywords" content="Multimodal Generative Models, Text-to-Image, Image Captioning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DALLE Flamingo</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV4ZJ9PVSV"></script>  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FV4ZJ9PVSV');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body onload="updateInteractive();">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Do DALL-E and Flamingo Understand Each Other?</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a target="_blank" href="https://hangligit.github.io/">Hang Li*</a><sup>1, 2</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://jindonggu.github.io/">Jindong Gu*</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://www.linkedin.com/in/rajat-koner/">Rajat Koner</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://www.linkedin.com/in/sahandsharifzadeh/?locale=de_DE">Sahand Sharifzadeh</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://www.dbs.ifi.lmu.de/~tresp/">Volker Tresp</a><sup>1, 2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>LMU Munich,</span>
+            <span class="author-block"><sup>2</sup>Siemens AG,</span>
+            <span class="author-block"><sup>3</sup>University of Oxford</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a target="_blank" href="https://openaccess.thecvf.com/content/ICCV2023/papers/Li_Do_DALL-E_and_Flamingo_Understand_Each_Other_ICCV_2023_paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+            <!-- Arxiv Link. -->
+            <span class="link-block">
+              <a target="_blank" href="https://arxiv.org/abs/2212.12249"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-file"></i>
+                </span>
+                <span>ArXiv</span>
+              </a>
+            </span>
+
+            <!-- Video Link. -->
+            <span class="link-block">
+              <a target="_blank" href="https://dalleflamingo.github.io"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+              </a>
+            </span>
+
+            <!-- Code Link. -->
+            <span class="link-block">
+              <a target="_blank" href="https://github.com/hangligit/DalleFlamingo"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+                </a>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-fullhd">
+    <div class="hero-body">
+      <div class="container">
+        <div class="rows">
+          <div style="text-align: center;">
+            <img src="images/Page1.jpg" class="interpolation-image" style="width: 100%; height: auto;"/>
+          </div>
+        </div>
+        <br>
+        <h2 class="subtitle has-text-centered">
+          <b>VL-Alignment: How can we be sure that a text-to-image model has the same understanding of what a bird is as an image-to-text model?</b>
+          <br>We explore two types of large-scale multimodal generative models, image-to-text and text-to-image. The image-to-text model generates abstract descriptions of an image, whereas the text-to-image model decodes the text into low-level visual pixel features. These two models are closely related but their relationship is little understood. In this work, we study if large multimodal generative models understand each other. Specifically, if Flamingo describes an image in text, can DALLE reconstruct an image similar to the input image from the text?
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The field of multimodal research focusing on the comprehension and creation of both images and text has witnessed significant strides. This progress is exemplified by the emergence of sophisticated models dedicated to image captioning at scale, such as the notable Flamingo model and text-to-image generative models, with DALL-E serving as a prominent example. An interesting question worth exploring in this domain is whether Flamingo and DALL-E understand each other. To study this question, we propose a reconstruction task where Flamingo generates a description for a given image and DALL-E uses this description as input to synthesize a new image. We argue that these models understand each other if the generated image is similar to the given image. Specifically, we study the relationship between the quality of the image reconstruction and that of the text generation. We find that an optimal description of an image is one that gives rise to a generated image similar to the original one. The finding motivates us to propose a unified framework to finetune the text-to-image and image-to-text models. Concretely, the reconstruction part forms a regularization loss to guide the tuning of the models. Extensive experiments on multiple datasets with different image captioning and image generation models validate our findings and demonstrate the effectiveness of our proposed unified framework. As DALL-E and Flamingo are not publicly available, we use Stable Diffusion and BLIP in the remaining work.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  <!-- Paper video. -->
+  <!-- <br>
+  <br>
+
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Video</h2>
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/Yvn4eR05A3M"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div> -->
+
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Experiment</h2>
+
+      <h2 class="title is-5">Image-to-Text-to-Image</h2>
+      <p class="content has-text-justified">
+        The quality of a caption can be evaluated by assessing the image reconstruction produced by a text-to-image model. The best text for an image is one that leads to the most accurate reconstruction of the original image
+      </p>
+
+      <p class="content has-text-justified">
+      <b>Method</b>: The generated image is compared with the input image using a similarity function based on CLIP image embeddings.
+      Human-annotated captions serve as ground truth representations of the input image to evaluate the quality of the generated caption.      
+      </p>
+
+      <div style="text-align: center;">
+        <img src="images/Page4.png" class="interpolation-image" style="width: 60%; height: auto;"/>
+      </div>
+      <br>
+
+      <b>Evaluation</b>: The result with three similarity and four caption metrics on the NoCaps dataset suggests that regardless of the similarity or evaluation metric, better image reconstruction always leads to better captions.
+      </p>
+      <br>
+
+      <div style="text-align: center;">
+        <img src="images/Page5.png" class="interpolation-image" style="width: 60%; height: auto;"/>
+      </div>
+      <br>
+      
+      <p class="content has-text-justified">
+      <b>Qualitative examples</b> of reconstruction tasks. The figure shows image reconstruction for the given input image of a bird. Two samples are shown with their generated images, ranked by the image similarity.
+      </p>
+
+      <div style="text-align: center;">
+        <img src="images/Page3.png" class="interpolation-image" style="width: 50%; height: auto;"/>
+      </div>
+    </br>
+
+
+      <h2 class="title is-5">Text-to-Image-to-Text</h2>
+      <p class="content has-text-justified">
+        The quality of a generated image can be evaluated by assessing the text reconstruction produced by a caption model. The best image for an image is one that leads to the most accurate reconstruction of the original text.
+      </p>
+
+      <p class="content has-text-justified">
+        <b>Method</b>: The generated image is compared with the input image using a similarity function based on CLIP image embeddings.
+        Human-annotated captions serve as ground truth representations of the input image to evaluate the quality of the generated caption.      
+        </p>
+  
+        <div style="text-align: center;">
+          <img src="images/Page6.png" class="interpolation-image" style="width: 60%; height: auto;"/>
+        </div>
+        <br>
+  
+        <b>Evaluation</b>: The result with three similarity and four caption metrics on the NoCaps dataset suggests that regardless of the similarity or evaluation metric, better image reconstruction always leads to better captions.
+        </p>
+        <br>
+  
+        <div style="text-align: center;">
+          <img src="images/Page7.png" class="interpolation-image" style="width: 60%; height: auto;"/>
+        </div>
+        <br>
+        
+        <p class="content has-text-justified">
+        <b>Qualitative examples</b> of reconstruction tasks. The figure shows text reconstruction for the given input image of a text. Two samples are shown with their generated texts, ranked by the image similarity. 
+        </p>
+  
+        <div style="text-align: center;">
+          <img src="images/Page8.png" class="interpolation-image" style="width: 50%; height: auto;"/>
+        </div>
+  
+        <br>
+        <p class="content has-text-justified">
+          <b>More Visualizations:</b> 
+          </p>
+        <div style="text-align: center;">
+          <img src="images/Page11.jpg" class="interpolation-image" style="width: 100%; height: auto;"/>
+        </div>
+
+        <br>
+        <div style="text-align: center;">
+          <img src="images/Page12.jpg" class="interpolation-image" style="width: 100%; height: auto;"/>
+        </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Cycle Finetuning</h2>
+      <p class="content has-text-justified">
+      <b>A Finetuning Framework</b> We propose a unified framework to enhance both the image-to-text and text-to-image models: finetuning the image-to-text model using a reconstruction loss computed by a text-to-image model as regularization.
+      </p>
+      <div style="text-align: center;">
+        <img src="images/Page2.png" class="interpolation-image" style="width: 120%; height: auto;"/>
+      </div>
+
+      <br>
+      <p class="content has-text-justified">
+        <b>Improvement:</b> Image-to-Text Captioning task
+        </p>
+        <div style="text-align: center;">
+          <img src="images/Page9.png" class="interpolation-image" style="width: 120%; height: auto;"/>
+        </div>
+
+        <b>Improvement:</b> Text-to-Image Generation task
+      </p>
+      <br>
+      <div style="text-align: center;">
+        <img src="images/Page10.png" class="interpolation-image" style="width: 50%; height: auto;"/>
+      </div>
+    
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@InProceedings{li2023dall,
+        author    = {Li, Hang and Gu, Jindong and Koner, Rajat and Sharifzadeh, Sahand and Tresp, Volker},
+        title     = {Do DALL-E and Flamingo Understand Each Other?},
+        booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+        month     = {October},
+        year      = {2023},
+        pages     = {1999-2010}
+    }</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a href="https://voxposer.github.io/">VoxPoser</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
