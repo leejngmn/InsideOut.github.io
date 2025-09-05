@@ -178,7 +178,7 @@
     <h2 class="title is-3">Framework Overview</h2>
     InsideOut's framework is a five-stage pipeline for integrating RGB and X-ray images into a unified 3DGS model that captures both external appearance and internal structures.<br>
     <br>
-    <img src="images/framework.png" class="interpolation-image" style="width: 50%; height: auto;"/>
+    <img src="images/framework.png" class="interpolation-image" style="width: 100%; height: auto;"/>
     <b>1. Point Cloud Initialization</b>: Generate initial point clouds for RGB Gaussians using Structure from Motion (SfM) and for radiative (X-ray) Gaussians using Angle Cuboid Uniform Initialization (ACUI).<br>
     <b>2. Surface Rendering</b>: Train RGB Gaussians with standard 3DGS to learn external surfaces and radiative Gaussians with X-Gaussian to capture coarse internal structures.<br>
     <b>3. Hierarchical Fitting</b>: Align the two modalities geometrically through global, local, and fine fitting stages to match positions, scales, and rotations.<br>
@@ -192,7 +192,7 @@
       <p class="content has-text-justified">
         InsideOut eliminates internal noise and scattered Gaussian splats, focusing them along the object’s surface for a cleaner representation. It also enhances the visibility of internal layers, producing sharper and more well-defined boundaries.
         <br>
-        <img src="images/total_rendering.png" class="interpolation-image" style="width: 100%; height: auto;"/>
+        <img src="images/total_rendering.png" class="interpolation-image" style="width: 50%; height: auto;"/>
       </p>
 
   
