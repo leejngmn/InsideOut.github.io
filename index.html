@@ -178,12 +178,12 @@
     <h2 class="title is-3">Framework Overview</h2>
     InsideOut's framework is a five-stage pipeline for integrating RGB and X-ray images into a unified 3DGS model that captures both external appearance and internal structures.<br>
     <img src="images/framework.png" class="interpolation-image" style="width: 100%; height: auto;"/>
-    1. Point Cloud Initialization: Generate initial point clouds for RGB Gaussians using Structure from Motion (SfM) and for radiative (X-ray) Gaussians using Angle Cuboid Uniform Initialization (ACUI).<br>
-    2. Surface Rendering: Train RGB Gaussians with standard 3DGS to learn external surfaces and radiative Gaussians with X-Gaussian to capture coarse internal structures.<br>
-    3. Hierarchical Fitting: Align the two modalities geometrically through global, local, and fine fitting stages to match positions, scales, and rotations.<br>
-    4. Internal Rendering: Refine structures using cross-sectional X-ray slices as guidance, applying an X-ray reference loss to sharpen boundaries and reduce noise.<br>
-    5. Visual Alignment: Transfer colors from RGB to radiative Gaussians and clone fine-detail RGB splats (bottom 95% by covariance) to enhance surface fidelity without disrupting internals.<br>
-
+    <b>1. Point Cloud Initialization</b>: Generate initial point clouds for RGB Gaussians using Structure from Motion (SfM) and for radiative (X-ray) Gaussians using Angle Cuboid Uniform Initialization (ACUI).<br>
+    <b>2. Surface Rendering</b>: Train RGB Gaussians with standard 3DGS to learn external surfaces and radiative Gaussians with X-Gaussian to capture coarse internal structures.<br>
+    <b>3. Hierarchical Fitting</b>: Align the two modalities geometrically through global, local, and fine fitting stages to match positions, scales, and rotations.<br>
+    <b>4. Internal Rendering</b>: Refine structures using cross-sectional X-ray slices as guidance, applying an X-ray reference loss to sharpen boundaries and reduce noise.<br>
+    <b>5. Visual Alignment</b>: Transfer colors from RGB to radiative Gaussians and clone fine-detail RGB splats (bottom 95% by covariance) to enhance surface fidelity without disrupting internals.<br>
+    <br>
     <div class="rows">
       <h2 class="title is-3">Qualitative Results</h2>
 
