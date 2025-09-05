@@ -87,7 +87,7 @@
                   <span class="icon">
                       <i class="fas fa-database"></i>
                   </span>
-                  <span>Data (soon)</span>
+                  <span>Data</span>
                 </a>
               </span>  
               
@@ -98,7 +98,7 @@
                 <span class="icon">
                     <i class="fab fa-youtube"></i>
                 </span>
-                <span>Video (soon)</span>
+                <span>Video</span>
               </a>
             </span>
 
@@ -109,7 +109,7 @@
                 <span class="icon">
                     <i class="fab fa-github"></i>
                 </span>
-                <span>Code (soon)</span>
+                <span>Code</span>
                 </a>
             </span>
             </div>
@@ -175,22 +175,28 @@
 
 <section class="section">
   <div class="container is-max-widescreen">
-    <h2 class="title is-3">Framework</h2>
+    <h2 class="title is-3">Framework Overview</h2>
+    InsideOut's framework is a five-stage pipeline for integrating RGB and X-ray images into a unified 3DGS model that captures both external appearance and internal structures.
     <img src="images/framework.png" class="interpolation-image" style="width: 100%; height: auto;"/>
+    1. Point Cloud Initialization: Generate initial point clouds for RGB Gaussians using Structure from Motion (SfM) and for radiative (X-ray) Gaussians using Angle Cuboid Uniform Initialization (ACUI).
+    2. Surface Rendering: Train RGB Gaussians with standard 3DGS to learn external surfaces and radiative Gaussians with X-Gaussian to capture coarse internal structures.
+    3. Hierarchical Fitting: Align the two modalities geometrically through global, local, and fine fitting stages to match positions, scales, and rotations.
+    4. Internal Rendering: Refine structures using cross-sectional X-ray slices as guidance, applying an X-ray reference loss to sharpen boundaries and reduce noise.
+    5. Visual Alignment: Transfer colors from RGB to radiative Gaussians and clone fine-detail RGB splats (bottom 95% by covariance) to enhance surface fidelity without disrupting internals.
 
     <div class="rows">
-      <h2 class="title is-3">Results</h2>
+      <h2 class="title is-3">Qualitative Results</h2>
 
       <h2 class="title is-5">Internal Rendering</h2>
       <p class="content has-text-justified">
-        InsideOut achieves internal detail preservation while mitigating noise, thereby improving overall rendering fidelity.
+        InsideOut eliminates internal noise and scattered Gaussian splats, focusing them along the object’s surface for a cleaner representation. It also enhances the visibility of internal layers, producing sharper and more well-defined boundaries.
       </p>
 
   
       
       <h2 class="title is-5">Mesh Reconstruction</h2>
       <p class="content has-text-justified">
-        InsideOut captures diverse normal distributions.
+        InsideOut maintains the overall shape integrity of both external and internal structures by integrating volumetric information with surface details. InsideOut captures diverse normal distributions, indicating richer geometric complexity compared to methods that rely on single modalities.
       </p>
       <div style="text-align: center;">
         <img src="images/mesh_normal.png" class="interpolation-image" style="width: 100%; height: auto;"/>
@@ -209,12 +215,13 @@
     <div class="rows">
       <h2 class="title is-3">Application</h2>
       <p class="content has-text-justified">
-      InsideOut visualizes external appearance and internal structures, enabling analysis and physical simulation.
+      InsideOut simultaneously visualizes external surface appearance and internal structural details, facilitating comprehensive analysis and physics-based simulation.
       </p>
 
       <br>
       <p class="content has-text-justified">
         <b>Real-world Asset Diagnosis</b> 
+        InsideOut delivers real-world 3D assets that support quantitative volume measurements and cross-sectional analysis, moving beyond mere visual inspection to evidence-based assessment.
         </p>
         <div style="text-align: center;">
           <video poster="" id="analylsis" autoplay controls muted loop playsinline height="100%">
@@ -225,6 +232,7 @@
 
 
         <b>Interactive Asset</b>
+        Interactive assets enable virtual exploration and manipulation, allowing users to reveal internal structures through dynamic interaction while preserving physical specimens. 
       </p>
       <br>
       <div style="text-align: center;">
@@ -242,7 +250,7 @@
     <h2 class="title">BibTeX</h2>
     <pre><code>@InProceedings{,
         author    = {},
-        title     = {InsideOut: Integrated RGB-Radiative Gaussian Splatting for ComprehSensive 3D Object Representation},
+        title     = {InsideOut: Integrated RGB-Radiative Gaussian Splatting for Comprehensive 3D Object Representation},
         booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
         month     = {October},
         year      = {2025},
