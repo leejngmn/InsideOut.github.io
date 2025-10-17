@@ -70,6 +70,22 @@
       height: auto;
       aspect-ratio: 16/9;
     }
+    
+    /* Style for update notice */
+    .update-notice {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      border-radius: 4px;
+      padding: 12px 20px;
+      margin: 20px 0;
+      color: #856404;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    
+    .update-notice i {
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body onload="updateInteractive();">
@@ -200,6 +216,12 @@
       <div class="column is-full">
         <h2 class="title is-3">Interactive 3D Model</h2>
         <br>
+        
+        <!-- Update Notice -->
+        <div class="update-notice">
+          <i class="fas fa-info-circle"></i>
+          <strong>Note:</strong> This viewer will be updated with our data soon.
+        </div>
         
         <!-- Voyager Explorer Element - Primary Method -->
         <div style="text-align:center; margin: 2em 0;">
