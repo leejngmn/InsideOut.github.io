@@ -75,16 +75,20 @@
     .update-notice {
       background-color: #fff3cd;
       border: 1px solid #ffeeba;
-      border-radius: 4px;
-      padding: 12px 20px;
-      margin: 20px 0;
+      border-radius: 8px;
+      padding: 15px 25px;
+      margin: 20px auto;
+      margin-bottom: 30px;
       color: #856404;
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      max-width: 600px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: block;
     }
     
-    .update-notice i {
-      margin-right: 8px;
+    .update-notice strong {
+      font-weight: 600;
     }
   </style>
 </head>
@@ -219,8 +223,10 @@
         
         <!-- Update Notice -->
         <div class="update-notice">
-          <i class="fas fa-info-circle"></i>
-          <strong>Note:</strong> This viewer will be updated with our data soon.
+          <p style="margin: 0; padding: 0;">
+            <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+            <strong>Note:</strong> This viewer will be updated with our data soon.
+          </p>
         </div>
         
         <!-- Voyager Explorer Element - Primary Method -->
